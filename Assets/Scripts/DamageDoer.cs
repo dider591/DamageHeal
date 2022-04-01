@@ -31,22 +31,16 @@ public class DamageDoer : MonoBehaviour
 
     public void Damage()
     {
-        _coroutineDamage = StartCoroutine(SetDamageHealth());      
+        _coroutineDamage = StartCoroutine(SetDamageHealth());
 
-        if (_health < _minHealth)
-        {
-            _health = _minHealth;
-        }       
+        
     }
 
     public void Heal()
     {
-        _coroutineHeal = StartCoroutine(SetHealHealth());        
+        _coroutineHeal = StartCoroutine(SetHealHealth());
 
-        if (_health > _maxHealth)
-        {
-            _health = _maxHealth;
-        }       
+        
     }
 
     private IEnumerator SetDamageHealth()
@@ -58,10 +52,15 @@ public class DamageDoer : MonoBehaviour
             _health = Mathf.MoveTowards(_health, target, _speed * Time.deltaTime);
             _slider.value = _health;
 
+            if (_health < _minHealth)
+            {
+                _health = _minHealth;
+            }
+
             yield return null;
         }
 
-        StopCoroutine(_coroutineHeal);
+        StopCoroutine(_coroutineDamage);
     }
 
     private IEnumerator SetHealHealth()
@@ -73,9 +72,14 @@ public class DamageDoer : MonoBehaviour
             _health = Mathf.MoveTowards(_health, target, _speed * Time.deltaTime);
             _slider.value = _health;
 
+            if (_health > _maxHealth)
+            {
+                _health = _maxHealth;
+            }
+
             yield return null;
         }
 
-        StopCoroutine(_coroutineDamage);
+        StopCoroutine(_coroutineHeal);
     }
 }
