@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ButtonsAnimator.cs" />
     <Compile Include="Assets\Scripts\DamageDoer.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

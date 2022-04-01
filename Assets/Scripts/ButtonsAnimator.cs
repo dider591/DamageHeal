@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 public class ButtonsAnimator : MonoBehaviour
 {
+    private const string Damage = "Damage";
+    
     [SerializeField] private Animator _animator;
-
 
     private void Start()
     {
@@ -17,6 +18,6 @@ public class ButtonsAnimator : MonoBehaviour
 
     public void ButtonAnimate()
     {
-        _animator.SetTrigger("Damage");
+        _animator.SetTrigger(Damage);
     }
 }

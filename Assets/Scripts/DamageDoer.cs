@@ -5,28 +5,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
+[RequireComponent(typeof(Health))]
 
 public class DamageDoer : MonoBehaviour
 {
-    [SerializeField] private GameObject _sliderOdject;
+    [SerializeField] private GameObject _sliderObject;
+    [SerializeField] private GameObject _playerObject;
 
     private Slider _slider;
-    private float _maxHealth = 1f;
-    private float _minHealth = 0f;
+    private Health _health;
     private float _damage = 0.1f;
+    private float _heal = 0.1f;
     private float _speed = 0.1f;
-    private float _health;
     private Coroutine _coroutineDamage;
     private Coroutine _coroutineHeal;
 
-    public float maxHealth => _maxHealth;
-
     private void Start()
     {
-        _slider = _sliderOdject.GetComponent<Slider>();
-
-        _health = _maxHealth;
-        _slider.value = _health;
+        _slider = _sliderObject.GetComponent<Slider>();
+        _health = _playerObject.GetComponent<Health>();
+        _slider.value = _health.health;
     }
 
     public void Damage()
@@ -41,19 +39,19 @@ public class DamageDoer : MonoBehaviour
 
     private IEnumerator SetDamageHealth()
     {
-        float target = _health - _damage;
+        float target = _health.health - _damage;
 
-        while (_health != target)
+        while (_health.health != target)
         {
-            _health = Mathf.MoveTowards(_health, target, _speed * Time.deltaTime);
-            _slider.value = _health;
+            _health.SetHealth( Mathf.MoveTowards(_health.health, target, _speed * Time.deltaTime));
+            _slider.value = _health.health;
 
-            if (_health < _minHealth)
+            if (_health.health < _health.minHealth)
             {
-                _health = _minHealth;
+                _health.SetHealth(_health.minHealth);
             }           
 
-            if (_health == target || _health == _minHealth)
+            if (_health.health == target || _health.health == _health.minHealth)
             {
                 StopCoroutine(_coroutineDamage);
             }
@@ -64,19 +62,19 @@ public class DamageDoer : MonoBehaviour
 
     private IEnumerator SetHealHealth()
     {
-        float target = _health + _damage;
+        float target = _health.health + _heal;
 
-        while (_health != target)
+        while (_health.health != target)
         {
-            _health = Mathf.MoveTowards(_health, target, _speed * Time.deltaTime);
-            _slider.value = _health;
+            _health.SetHealth( Mathf.MoveTowards(_health.health, target, _speed * Time.deltaTime));
+            _slider.value = _health.health;
 
-            if (_health > _maxHealth)
+            if (_health.health > _health.maxHealth)
             {
-                _health = _maxHealth;
+                _health.SetHealth(_health.maxHealth);
             }
 
-            if (_health == target || _health == _maxHealth)
+            if (_health.health == target || _health.health == _health.maxHealth)
             {
                 StopCoroutine(_coroutineHeal);
             }

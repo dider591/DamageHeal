@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 392004510}
   - component: {fileID: 392004515}
   - component: {fileID: 392004514}
+  - component: {fileID: 392004516}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -334,7 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60839d971a7842a45a07dbcf2cdf781f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderOdject: {fileID: 643637949}
+  _sliderObject: {fileID: 643637949}
+  _playerObject: {fileID: 1494808297}
 --- !u!114 &392004515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +388,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &392004516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392004509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c274555a3dd45c438cae22013003510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &643637949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1494808298}
+  - component: {fileID: 1494808299}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1211,6 +1226,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1494808299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494808297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c274555a3dd45c438cae22013003510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1556277421
 GameObject:
   m_ObjectHideFlags: 0
