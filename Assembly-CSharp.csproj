@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{32C3BDE6-E125-3128-82C1-25D0441455A3}</ProjectGuid>
+    <ProjectGuid>{02190838-646D-497C-4860-389140385727}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,8 +53,8 @@
     <UnityVersion>2020.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Character Pack\Scripts\DamageDoer.cs" />
-    <Compile Include="Assets\Character Pack\Scripts\ButtonsAnimator.cs" />
+    <Compile Include="Assets\Scripts\ButtonsAnimator.cs" />
+    <Compile Include="Assets\Scripts\DamageDoer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
