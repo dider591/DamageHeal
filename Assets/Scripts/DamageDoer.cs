@@ -14,6 +14,7 @@ public class DamageDoer : MonoBehaviour
     private float _maxHealth = 1f;
     private float _minHealth = 0f;
     private float _damage = 0.1f;
+    private float _speed = 0.1f;
     private float _health;
     private Coroutine _coroutineDamage;
     private Coroutine _coroutineHeal;
@@ -56,11 +57,11 @@ public class DamageDoer : MonoBehaviour
 
         while (_health != target)
         {
-            _health = Mathf.MoveTowards(_health, target, Time.deltaTime * - _damage);
+            _health = Mathf.MoveTowards(_health, target, _speed * Time.deltaTime);
             _slider.value = _health;
-        }
 
-        yield return null;
+            yield return null;
+        }      
     }
 
     private IEnumerable SetHealHealth()
@@ -69,10 +70,10 @@ public class DamageDoer : MonoBehaviour
 
         while (_health != target)
         {
-            _health = Mathf.MoveTowards(_health, target, Time.deltaTime * _damage);
+            _health = Mathf.MoveTowards(_health, target, _speed * Time.deltaTime);
             _slider.value = _health;
-        }
 
-        yield return null;
+            yield return null;
+        }       
     }
 }
