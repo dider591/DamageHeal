@@ -53,9 +53,9 @@
     <UnityVersion>2020.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ButtonsAnimator.cs" />
-    <Compile Include="Assets\Scripts\DamageDoer.cs" />
-    <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\DamageHeal\UI\Buttons\ButtonsAnimator.cs" />
+    <Compile Include="Assets\DamageHeal\Scripts\HealthBar.cs" />
+    <Compile Include="Assets\DamageHeal\Scripts\Health.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
