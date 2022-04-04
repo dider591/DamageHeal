@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Health: MonoBehaviour
-{
-    [SerializeField] private GameObject _bar;
-
-    private HealthBar _healthBar;
+{   
     private float _health = 1f;
     private float _damage = 0.1f;
     private float _heal = 0.1f;
@@ -16,15 +14,12 @@ public class Health: MonoBehaviour
     private float _minHealth = 0f;
     private float _currentHealth;
 
+    public UnityEvent healthEvent;
+
     public float health => _health;
     public float maxHealth => _maxHealth;
     public float minHealth => _minHealth;
     public float currentHealth => _currentHealth;
-
-    private void Start()
-    {
-        _healthBar = _bar.GetComponent<HealthBar>();
-    }
 
     private void SetHealth(float health)
     {
@@ -41,7 +36,7 @@ public class Health: MonoBehaviour
             SetHealth(minHealth);
         }
 
-        _healthBar.StartDrawHealthbar();
+        healthEvent.Invoke();
     }
 
     public void Heal()
@@ -54,6 +49,6 @@ public class Health: MonoBehaviour
             SetHealth(maxHealth);
         }
 
-        _healthBar.StartDrawHealthbar();
+        healthEvent.Invoke();
     }
 }
