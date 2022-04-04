@@ -6,13 +6,12 @@ using System;
 public class Health : MonoBehaviour
 {   
     private float _targetHealth = 1f;
-    private float _damage = 0.1f;
-    private float _heal = 0.1f;
+    private float _steepValue = 0.1f;
     private float _maxHealth = 1f;
     private float _minHealth = 0f;
     private float _currentHealth;
 
-    public event Action<float, float> ChangedHealth;
+    public event Action<float, float> Changed;
 
     public float TargetHealth => _targetHealth;
     public float MaxHealth => _maxHealth;
@@ -20,28 +19,22 @@ public class Health : MonoBehaviour
     public float CurrentHealth => _currentHealth;
 
     public void Damage()
-    {
+    {       
         _currentHealth = _targetHealth;
-        _targetHealth -= _damage;
+        _targetHealth -= _steepValue;
 
-        if (_targetHealth < MinHealth)
-        {
-            _targetHealth = MinHealth;
-        }
+        _targetHealth = Mathf.Clamp(_targetHealth, _minHealth, _maxHealth);
 
-        ChangedHealth?.Invoke(_currentHealth, _targetHealth);
+        Changed?.Invoke(_currentHealth, _targetHealth);
     }
 
     public void Heal()
     {
         _currentHealth = _targetHealth;
-        _targetHealth += _heal;
+        _targetHealth += _steepValue;
 
-        if (_targetHealth > MaxHealth)
-        {
-            _targetHealth = MaxHealth;
-        }
+        _targetHealth = Mathf.Clamp(_targetHealth, _minHealth, _maxHealth);
 
-        ChangedHealth?.Invoke(_currentHealth, _targetHealth);
+        Changed?.Invoke(_currentHealth, _targetHealth);
     }
 }
