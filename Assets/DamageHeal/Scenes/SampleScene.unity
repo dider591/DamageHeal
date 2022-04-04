@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 643637950}
   - component: {fileID: 643637951}
   - component: {fileID: 643637953}
+  - component: {fileID: 643637952}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -463,6 +464,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &643637952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643637949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60839d971a7842a45a07dbcf2cdf781f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &643637953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c274555a3dd45c438cae22013003510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 828772532}
+  _health: {fileID: 643637952}
   _bar: {fileID: 643637951}
 --- !u!1 &705507993
 GameObject:
@@ -606,38 +619,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &828772532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e156495aa9aa3424d85dac51d5fdbd21, type: 3}
-  m_PrefabInstance: {fileID: 1385989734}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &828772534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828772532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60839d971a7842a45a07dbcf2cdf781f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 643637953}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
-        m_MethodName: StartDrawHealthbar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &885578928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1131,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 828772534}
+      - m_Target: {fileID: 643637952}
         m_TargetAssemblyTypeName: Health, Assembly-CSharp
         m_MethodName: Damage
         m_Mode: 1
@@ -1372,7 +1353,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 828772534}
+      - m_Target: {fileID: 643637952}
         m_TargetAssemblyTypeName: Health, Assembly-CSharp
         m_MethodName: Heal
         m_Mode: 1

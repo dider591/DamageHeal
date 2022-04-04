@@ -1,54 +1,47 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
-public class Health: MonoBehaviour
+public class Health : MonoBehaviour
 {   
-    private float _health = 1f;
+    private float _targetHealth = 1f;
     private float _damage = 0.1f;
     private float _heal = 0.1f;
     private float _maxHealth = 1f;
     private float _minHealth = 0f;
     private float _currentHealth;
 
-    public UnityEvent healthEvent;
+    public event Action<float, float> ChangedHealth;
 
-    public float health => _health;
-    public float maxHealth => _maxHealth;
-    public float minHealth => _minHealth;
-    public float currentHealth => _currentHealth;
-
-    private void SetHealth(float health)
-    {
-        _health = health;        
-    }
+    public float TargetHealth => _targetHealth;
+    public float MaxHealth => _maxHealth;
+    public float MinHealth => _minHealth;
+    public float CurrentHealth => _currentHealth;
 
     public void Damage()
     {
-        _currentHealth = _health;
-        _health -= _damage;
+        _currentHealth = _targetHealth;
+        _targetHealth -= _damage;
 
-        if (_health < minHealth)
+        if (_targetHealth < MinHealth)
         {
-            SetHealth(minHealth);
+            _targetHealth = MinHealth;
         }
 
-        healthEvent.Invoke();
+        ChangedHealth?.Invoke(_currentHealth, _targetHealth);
     }
 
     public void Heal()
     {
-        _currentHealth = _health;
-        _health += _heal;
+        _currentHealth = _targetHealth;
+        _targetHealth += _heal;
 
-        if (_health > maxHealth)
+        if (_targetHealth > MaxHealth)
         {
-            SetHealth(maxHealth);
+            _targetHealth = MaxHealth;
         }
 
-        healthEvent.Invoke();
+        ChangedHealth?.Invoke(_currentHealth, _targetHealth);
     }
 }
